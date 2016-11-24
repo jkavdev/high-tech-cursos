@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="appCliente">
 	<head>
 		<meta charset="UTF-8" />
 		<title>Insert title here</title>
 		
-		<script type="text/javascript">
-			//<![CDATA[
-			function carregarDados() {
-			  var xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-			     document.getElementById("display").innerHTML = this.responseText;
-			    }
-			  };
-			  xhttp.open("GET", "http://localhost:8087/clientes", true);
-			  xhttp.send();
-			}
-			//]]>
-		</script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.1/angular.min.js"></script>
+		<script type="text/javascript" src="./js/app.js"></script>
 	</head>
-	<body>
-		<button type="button" onclick="carregarDados()">Carregar clientes</button>
-		<div id="display">
+	
+	<body ng-controller="indexController">
+		OI {{cliente.nome}} <br />
+		<div ng-repeat="cliente in clientes">
+			{{cliente.id}} - {{cliente.nome}} <input type="button" value="excluir" ng-click="excluirClientes(cliente)" />
 		</div>
+		
+		<input type="text" ng-model="cliente.nome" />
+		<input type="button" value="Salvar" ng-click="salvarClientes()" />
+		
 	</body>
 	
 </html>
