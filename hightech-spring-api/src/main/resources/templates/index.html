@@ -9,10 +9,16 @@
 	</head>
 	
 	<body ng-controller="indexController">
-		OI {{nome}}
+		OI {{cliente.nome}} <br />
 		<div ng-repeat="cliente in clientes">
-			{{cliente.id}} - {{cliente.nome}}
+			{{cliente.id}} - {{cliente.nome}} 
+				<input type="button" value="excluir" ng-click="excluirClientes(cliente)" />
+				<input type="button" value="alterar" ng-click="alterarClientes(cliente)" />
 		</div>
+		
+		<input type="text" ng-model="cliente.nome" />
+		<input type="button" value="Salvar" ng-click="salvarClientes()" />
+		<input type="button" value="cancelar" ng-click="limparFormulario()" />
 	</body>
 	
 </html>
